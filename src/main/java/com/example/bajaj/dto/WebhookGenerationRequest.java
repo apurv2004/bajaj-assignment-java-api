@@ -1,9 +1,5 @@
 package com.example.bajaj.dto;
 
-/**
- * DTO for the webhook generation API request.
- * Contains user details to generate webhook and access token.
- */
 public class WebhookGenerationRequest {
 
     private String name;

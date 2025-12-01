@@ -5,10 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Main application class for Bajaj Assignment Application.
- * Starts the Spring Boot application and triggers the assignment workflow.
- */
 @SpringBootApplication
 public class BajajAssignmentApplication {
 

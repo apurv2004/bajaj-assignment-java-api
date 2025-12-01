@@ -2,10 +2,6 @@ package com.example.bajaj.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * DTO for the webhook generation API response.
- * Maps the response from the first API call that provides webhook and accessToken.
- */
 public class WebhookGenerationResponse {
 
     @JsonProperty("webhook")
