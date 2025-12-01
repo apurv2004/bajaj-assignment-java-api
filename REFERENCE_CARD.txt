@@ -1,0 +1,173 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   BAJAJ ASSIGNMENT - QUICK REFERENCE CARD                 ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─ WHAT TO UPDATE ─────────────────────────────────────────────────────────┐
+│                                                                           │
+│  FILE: src/main/java/com/example/bajaj/service/AssignmentService.java    │
+│  LINE: 39                                                                │
+│                                                                           │
+│  FIND: private static final String FINAL_SQL_QUERY = "...";             │
+│  REPLACE WITH: Your SQL query                                            │
+│                                                                           │
+│  EXAMPLE:                                                                │
+│  private static final String FINAL_SQL_QUERY =                          │
+│    "SELECT COUNT(*) FROM employees WHERE department = 'IT'";            │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ HOW TO RUN ─────────────────────────────────────────────────────────────┐
+│                                                                           │
+│  $ cd /Users/apurvkulkarni/Downloads/Bajaj\ Assignment                   │
+│  $ mvn spring-boot:run                                                   │
+│                                                                           │
+│  Wait for: "✓ Webhook generated successfully"                            │
+│  Wait for: "✓ SQL query submitted successfully"                          │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ WHAT HAPPENS AUTOMATICALLY ─────────────────────────────────────────────┐
+│                                                                           │
+│  1. Spring Boot starts on port 8080                                      │
+│  2. AssignmentRunner triggers (on startup)                               │
+│  3. Calls API 1 to get webhook + token                                   │
+│  4. Calls API 2 to submit SQL query                                      │
+│  5. Application completes                                                │
+│                                                                           │
+│  Total time: ~5-10 seconds                                               │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ KEY INFORMATION ────────────────────────────────────────────────────────┐
+│                                                                           │
+│  Java Version:        21 (LTS)                                           │
+│  Spring Boot:         3.2.0                                              │
+│  Your Details:        Pre-configured in code                             │
+│  Your SQL Query:      YOU MUST UPDATE (Line 39)                         │
+│  Server Port:         8080                                               │
+│  API 1 Timeout:       10 seconds connect, 20 seconds read               │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ FILES YOU NEED TO KNOW ─────────────────────────────────────────────────┐
+│                                                                           │
+│  TO UPDATE:                                                              │
+│  └─ AssignmentService.java (Line 39) - YOUR SQL QUERY                   │
+│                                                                           │
+│  TO UNDERSTAND:                                                          │
+│  ├─ README.md - Full documentation                                       │
+│  ├─ QUICK_START.md - 5-minute setup                                      │
+│  ├─ ARCHITECTURE.md - Design diagrams                                     │
+│  └─ NEXT_STEPS.md - What to do next                                      │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ API DETAILS ────────────────────────────────────────────────────────────┐
+│                                                                           │
+│  API 1: Generate Webhook & Token                                         │
+│  ├─ Endpoint: https://bfhldevapigw.healthrx.co.in/hiring/...            │
+│  ├─ Method: POST                                                         │
+│  ├─ Sends: name, regNo, email                                            │
+│  └─ Receives: webhook, accessToken                                       │
+│                                                                           │
+│  API 2: Submit SQL Query                                                 │
+│  ├─ Endpoint: https://bfhldevapigw.healthrx.co.in/hiring/...            │
+│  ├─ Method: POST                                                         │
+│  ├─ Auth: Access token from API 1                                        │
+│  ├─ Sends: SQL query                                                     │
+│  └─ Receives: Success response                                           │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ SUCCESS INDICATORS ─────────────────────────────────────────────────────┐
+│                                                                           │
+│  Look for these messages in the output:                                  │
+│                                                                           │
+│  ✓ Webhook generated successfully                                        │
+│  ✓ SQL query submitted successfully                                      │
+│                                                                           │
+│  If you see both: YOU'RE DONE! ✅                                         │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ PROJECT STRUCTURE ──────────────────────────────────────────────────────┐
+│                                                                           │
+│  src/main/java/com/example/bajaj/                                        │
+│  ├── BajajAssignmentApplication.java     (Main class)                    │
+│  ├── config/AppConfig.java               (REST setup)                    │
+│  ├── dto/                                                                │
+│  │   ├── WebhookGenerationRequest.java                                   │
+│  │   ├── WebhookGenerationResponse.java                                  │
+│  │   └── WebhookTestRequest.java                                         │
+│  ├── service/AssignmentService.java      (Business logic)                │
+│  └── runner/AssignmentRunner.java        (Startup trigger)               │
+│                                                                           │
+│  src/main/resources/                                                     │
+│  └── application.properties               (Configuration)                │
+│                                                                           │
+│  pom.xml                                  (Maven config)                 │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ TROUBLESHOOTING ────────────────────────────────────────────────────────┐
+│                                                                           │
+│  Problem: "REPLACE THIS..." appears in logs                             │
+│  Solution: Update FINAL_SQL_QUERY in AssignmentService.java (Line 39)   │
+│                                                                           │
+│  Problem: Connection timeout                                            │
+│  Solution: Check internet & verify APIs are reachable                    │
+│                                                                           │
+│  Problem: 401 Unauthorized                                              │
+│  Solution: Check logs, token might not be passed correctly               │
+│                                                                           │
+│  Problem: Port 8080 already in use                                       │
+│  Solution: Change port in application.properties                         │
+│                                                                           │
+│  Problem: Maven not found                                                │
+│  Solution: brew install maven                                            │
+│                                                                           │
+│  Problem: Java version error                                             │
+│  Solution: Install Java 21: java -version should show 21.x.x            │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ YOUR INFORMATION (Pre-configured) ──────────────────────────────────────┐
+│                                                                           │
+│  Name:   Apurv Kulkarni                                                  │
+│  RegNo:  22BCE9252                                                       │
+│  Email:  apurv.22bce9252@vitapstudent.ac.in                             │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+┌─ QUICK COMMANDS ─────────────────────────────────────────────────────────┐
+│                                                                           │
+│  Navigate to project:                                                    │
+│  $ cd /Users/apurvkulkarni/Downloads/Bajaj\ Assignment                   │
+│                                                                           │
+│  Run application:                                                        │
+│  $ mvn spring-boot:run                                                   │
+│                                                                           │
+│  Build only:                                                             │
+│  $ mvn clean package                                                     │
+│                                                                           │
+│  Run from JAR:                                                           │
+│  $ java -jar target/bajaj-assignment-1.0.0.jar                          │
+│                                                                           │
+│  Check Java version:                                                     │
+│  $ java -version                                                         │
+│                                                                           │
+│  Check Maven:                                                            │
+│  $ mvn -version                                                          │
+│                                                                           │
+└───────────────────────────────────────────────────────────────────────────┘
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║  1. Update FINAL_SQL_QUERY (Line 39 of AssignmentService.java)           ║
+║  2. Run: mvn spring-boot:run                                             ║
+║  3. Look for ✓ success messages                                          ║
+║  4. You're done! Check Bajaj website for results                         ║
+║                                                                            ║
+║  For detailed help: Read README.md or QUICK_START.md                    ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
